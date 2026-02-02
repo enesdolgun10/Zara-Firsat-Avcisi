@@ -1,0 +1,18 @@
+# Sanal Ortam
+venv/
+env/
+
+# Python Derleme Dosyaları
+__pycache__/
+*.pyc
+
+# Veritabanı (Kişisel veriler gitmesin)
+*.db
+takip.db
+
+# VS Code Geçici Dosyaları
+.vscode/
+tempCodeRunnerFile.py
+
+# İşletim Sistemi Dosyaları
+.DS_Store
