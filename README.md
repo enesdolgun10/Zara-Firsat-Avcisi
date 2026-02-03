@@ -138,3 +138,9 @@ Planlanan özellikler:
 ---
 
 ## 🏹 İyi Avlar!
+
+---
+
+### 👨‍💻 Geliştirici
+
+- **Enes Dolgun** - [LinkedIn Hesabım](https://www.linkedin.com/in/enesdolgun10/)
