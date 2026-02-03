@@ -127,8 +127,6 @@ Planlanan özellikler:
 
 - [ ] 🌐 Web Arayüzü (GUI) – Terminal yerine modern bir arayüz
 - [ ] 🌍 Çoklu Dil Desteği – Farklı ülkelerdeki Zara mağazaları
-- [ ] 🛡️ Proxy Desteği – IP ban riskini azaltmak için
-- [ ] 💬 Discord Entegrasyonu – Bildirimleri Discord'dan alma
 
 ---
 
