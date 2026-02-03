@@ -126,7 +126,7 @@ Bu proje şu an temel işlevlerini sorunsuz yerine getirmektedir ancak geliştir
 Planlanan özellikler:
 
 - [ ] 🌐 Web Arayüzü (GUI) – Terminal yerine modern bir arayüz
-- [ ] 🌍 Çoklu Dil Desteği – Farklı ülkelerdeki Zara mağazaları
+- [ ] 🌍 Sadece Zarayı değil diğer alışveriş sitelerini kapsaması
 
 ---
 
