@@ -54,7 +54,7 @@ Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları t
 Terminali açın ve projeyi bilgisayarınıza çekin:
 
 ```bash
-git clone https://github.com/KULLANICI_ADINIZ/zara-firsat-avcisi.git
+git clone https://github.com/enesdolgun10/zara-firsat-avcisi.git
 cd zara-firsat-avcisi
 ```
 
