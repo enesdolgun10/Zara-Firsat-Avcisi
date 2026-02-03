@@ -21,7 +21,7 @@ def tekli_urun_kontrolu(urun, current_user):
         )
         
         for m in indirim_mesajlari:
-            notifier.mesaj_gonder(m, gorsel_url=data.get('gorsel'))
+            notifier.mesaj_gonder(current_user[2], m, gorsel_url=data.get('gorsel'))
             
         return True
     except Exception as e:
@@ -40,7 +40,11 @@ def baslat(current_user):
     print(f"\n🚀 TAKİP MODU BAŞLATILIYOR...")
     print(f"👤 Kullanıcı: {current_user[1]}")
     
-    dakika = int(ui_tools.guvenli_input("⏱️ Tur aralığı (Dakika): "))
+    try:
+        dakika = int(ui_tools.guvenli_input("⏱️ Tur aralığı (Dakika): "))
+    except ValueError:
+        print("⚠️ Geçersiz sayı, varsayılan olarak 5 dakika ayarlandı.")
+        dakika = 5
     
     MAX_ISCI = 4 
     
@@ -76,8 +80,7 @@ def baslat(current_user):
                 
         except KeyboardInterrupt:
             print("\n" + "!"*10 + " TAKİP DURDURULDU " + "!"*10)
-            input("[↩] Menüye dönmek için Enter'a basın...")
-            break
+            break 
         except Exception as e:
             print(f"\n[!] Beklenmedik Döngü Hatası: {e}")
             time.sleep(5)
