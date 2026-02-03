@@ -3,6 +3,8 @@ import sys
 import database
 from helpers import analyser, ui_tools, notifier, multi_tracker 
 
+# Global session variable
+# CURRENT_USER yapısı: (id, kullanici_adi, telegram_id)
 CURRENT_USER = None  
 
 def ekle_menu():
@@ -11,6 +13,7 @@ def ekle_menu():
     url = ui_tools.guvenli_input("🔗 Zara Ürün Linki: ", link_mi=True)
     size = ui_tools.guvenli_input("📏 Beden (S/M/L/XL/XXL): ").upper()
     
+    # İsmi geçici olarak 'Analiz Ediliyor...' yapıyoruz
     u_id = database.urun_ekle(CURRENT_USER[0], "Analiz Ediliyor...", "...", url, size)
     
     print("\n[*] Ürün listeye eklendi, ilk kontrol yapılıyor...")
@@ -20,7 +23,8 @@ def ekle_menu():
             url, size, u_id, detay_goster=True, user_data=CURRENT_USER
         )
         for m in msgs:
-            notifier.mesaj_gonder(m, gorsel_url=data.get('gorsel'))
+            # GÜNCELLEME BURADA: Artık kullanıcının ID'sini (CURRENT_USER[2]) gönderiyoruz
+            notifier.mesaj_gonder(CURRENT_USER[2], m, gorsel_url=data.get('gorsel'))
             
         print("\n✅ Ürün başarıyla kaydedildi.")
     except Exception as e:
@@ -73,6 +77,8 @@ def ana_menu():
         secim = ui_tools.guvenli_input("\n👉 Seçiminiz: ")
 
         if secim == "1": 
+            # NOT: multi_tracker dosyanın içinde de 'notifier.mesaj_gonder' kullanıyorsan
+            # oraya da CURRENT_USER[2] parametresini eklemeyi unutma!
             multi_tracker.baslat(CURRENT_USER)
             
         elif secim == "2": ekle_menu()
@@ -145,8 +151,11 @@ def start_bot():
             print("\n" + "-"*15 + " YENİ KAYIT " + "-"*15)
             k_adi = ui_tools.guvenli_input("👤 Kullanıcı Adı: ")
             sifre = ui_tools.guvenli_input("🔐 Sistem Şifresi: ")
+            
+            # GÜNCELLEME BURADA: Zara bilgilerini sildik, sadece Telegram ID alıyoruz.
             t_id = ui_tools.guvenli_input("📱 Telegram ID: ")
             
+            # Veritabanı kaydı (3 parametreli)
             if database.kullanici_kaydet(k_adi, sifre, t_id):
                 print("\n✅ Kayıt başarılı! Şimdi giriş yapabilirsiniz.")
                 input("[↩] Giriş ekranına dönmek için Enter...")
@@ -155,7 +164,8 @@ def start_bot():
                 input("[↩] Tekrar denemek için Enter...")
         
         elif giris_secim == "3":
-            print("\n[!] Program kapatılıyor. İyi avlar!"); sys.exit()
+            print("\n[!] Program kapatılıyor. İyi avlar!"); 
+            break
 
 if __name__ == "__main__":
     start_bot()

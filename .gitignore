@@ -16,3 +16,6 @@ tempCodeRunnerFile.py
 
 # İşletim Sistemi Dosyaları
 .DS_Store
+
+# Token dosyası
+config.py
